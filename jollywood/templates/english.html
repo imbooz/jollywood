@@ -1,0 +1,31 @@
+{% extends 'rsc/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+		
+	<div class="container mt-5 jumbotron">
+		<div class="row">
+
+			<div class="col-md-9">
+				<div class="content-section">		
+					<div>
+              			<a href="#info"></a>
+    					<h2 class="display-4">Importance of English Language</h2>
+    					<p class="lead">Nowadays, English is considered to be one of the most important languages as it has become an international language of communication in almost every field of business. This requires almost everyone to be able to use English in their jobs!</p>
+    					<hr class="my-3">
+    					<p>Starting with only 2 teachers and a couple of small rooms, Jollywood managed to become recognized as one of the most effective teaching centers in Uzbekistan with its supportive team, flexible timetables and affordable prices.</p>
+
+  						<canvas id="stat-0" style="display: none;" class="line-chart" width="400" height="300">
+  							
+  						</canvas>
+
+    					<i class="btn btn-primary fa fa-chart-line stats mb-2" data-content="#stat-0"> See statistics</i>
+    				</div>
+				</div>
+			</div>
+
+			{% include 'rsc/calendar.html' %}		
+			
+		</div>
+	</div>
+
+{% endblock content %}

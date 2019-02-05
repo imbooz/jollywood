@@ -1,0 +1,10 @@
+django
+gunicorn
+django-heroku
+psycopg2-binary
+dj-database-url
+easy-thumbnails
+django-crispy-forms
+requests
+Pillow
+django-image-cropping

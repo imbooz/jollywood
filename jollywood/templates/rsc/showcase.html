@@ -1,0 +1,99 @@
+
+<div class="row mt-3 p-3 md">
+          
+          <!-- Home Left Column -->
+          <div class="col-md-5 pr-1">
+
+            <!-- Carousel -->
+            <div class="carousel slide mt-1" data-ride="carousel" id="carousel">
+
+              <!-- Indicators -->
+              <ul class="carousel-indicators">
+                <li data-target="carousel" class="active" data-slide-to="0"></li>
+                <li data-target="carousel" data-slide-to="1"></li>
+                <li data-target="carousel" data-slide-to="2"></li>
+                <li data-target="carousel" data-slide-to="3"></li>
+                <li data-target="carousel" data-slide-to="4"></li>
+              </ul>
+
+              <!-- The slideshow item -->
+              <div class="carousel-inner">
+
+                <div class="carousel-item active">
+                  <a href="{% url 'jollywood-home' %}">
+                    <div class="thumbnail">
+                      <img src="img/showcase/home.jpg" class="img-fluid card rounded-3" alt="Main Image">
+                    </div>
+                  </a>
+                </div>
+
+                <div class="carousel-item">
+                  <a href="{% url 'jollywood-english' %}">
+                    <div class="thumbnail">
+                      <img src="img/showcase/english.jpg" class="img-fluid card rounded-3" alt="English">
+                    </div>
+                  </a>
+                </div>
+
+                <div class="carousel-item">
+                  <a href="{% url 'jollywood-russian' %}">
+                    <div class="thumbnail">
+                      <img src="img/showcase/russian.jpg" class="img-fluid card rounded-3" alt="Russian">
+                    </div>
+                  </a>
+                </div>
+
+                <div class="carousel-item">
+                  <a href="{% url 'jollywood-mathematics' %}">
+                    <div class="thumbnail">
+                      <img src="img/showcase/math1.jpg" class="img-fluid card rounded-3" alt="Mathematics">
+                    </div>
+                  </a>
+                </div>
+
+                <div class="carousel-item">
+                  <a href="{% url 'jollywood-kids' %}">
+                    <div class="thumbnail">
+                      <img src="img/showcase/kids.jpg" class="img-fluid card rounded-3" alt="Kids">
+                    </div>
+                  </a>
+                </div>
+
+                <!-- Left & Right Arrows -->
+                <a href="#carousel" data-slide="prev" class="carousel-control-prev">
+                  <span class="carousel-control-prev-icon"></span>
+                </a>
+
+                <a href="#carousel" data-slide="next" class="carousel-control-next">
+                  <span class="carousel-control-next-icon"></span>
+                </a>
+
+              </div>
+
+            </div>
+
+          </div>
+
+          <!-- Home Right Column -->
+          <div class="col-md-7 pr-1">
+            
+            <div class="tab-pane show active" id="Home">
+              <div class="card border-light mb-3 mt-1">
+                <div class="card-header"><h3 class="text-primary text-center">Jollywood Teaching Center</h3></div>
+                  <div class="card-body">
+                    <h4 class="card-title">Come And Join Our Family</h4>
+                    <p class="card-text">Jollywood is one of the best teaching centers in Uzbekistan. Despite our location in the suburbs, a number of students from various cities and regions of Uzbekistan are currently attending our lessons in the morning and evening classes.</p>
+
+                    <h4 class="card-title mb-1">Our Mission</h4>
+                    <p class="card-text mt-1 mb-0">
+                      <li>To provide ESL, Russian language instruction and support to individuals wishing to improve communication skills of their target subject area</li>
+
+                      <li>To assist language learners in gaining cultural awareness and language comprehension in order to bridge the cultural and linguistic gaps both locally and abroad</li>
+                    </p>
+                  </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div> <!-- Row Finishes -->

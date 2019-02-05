@@ -1,0 +1,107 @@
+      <!-- Students Tab -->
+      <div class="tab-pane fade" id="Students">
+        <div class="container-fluid mt-2">
+
+          <div class="row jumbotron">
+            
+            <!-- Main Links For Students Goes Here... -->
+            <div class="col-md-9 col-sm-8">
+              <!-- English Students 1 -->
+              <div class="row">
+                <!-- Beginner -->  
+                <div class="col-md-6 pr-1">
+                  <a href="{% url 'jollywood-books' Beginner %}" class="levels-link hvr-bob">
+                    <div class="card border-danger mb-3">
+                      <div class="card-header"><h3>Beginner</h3></div>
+                      <div class="card-body">
+                        <h4 class="card-title">Beginner Resources</h4>
+                        <p class="card-text">Here you can find all the beginner materials you would need. Feel free to download and use them.</p>
+                      </div>
+                    </div>
+                </a>
+                </div>
+                <!-- Elementary -->
+                <div class="col-md-6 pr-1">
+                  <a href="{% url 'jollywood-books' Elementary %}" class="levels-link hvr-bob">
+                    <div class="card border-info mb-3">
+                      <div class="card-header"><h3>Elementary</h3></div>
+                      <div class="card-body">
+                        <h4 class="card-title">Elementary Resources</h4>
+                        <p class="card-text">All the books you might need can be found here. Stories, Grammar, Vocabulary etc.</p>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+
+              </div>
+              <!-- English Students 2 -->
+              <div class="row">
+                <!-- Pre-Intermediate -->
+                <div class="col-md-6 pr-1">
+                  <a href="{% url 'jollywood-books' Pre %}" class="levels-link hvr-bob">
+                    <div class="card border-secondary mb-3">
+                      <div class="card-header"><h3>Pre-Intermediate</h3></div>
+                      <div class="card-body">
+                        <h4 class="card-title">Pre-Intermediate Resources</h4>
+                        <p class="card-text">Try our new materials in your studies. We hope we can help you to improve and reach your goals.</p>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+                <!-- Intermediate -->
+                <div class="col-md-6 pr-1">
+                  <a href="{% url 'jollywood-books' Intermediate %}" class="levels-link hvr-bob">
+                    <div class="card border-warning mb-3">
+                      <div class="card-header"><h3>Intermediate</h3></div>
+                      <div class="card-body">
+                        <h4 class="card-title">Intermediate Resources</h4>
+                        <p class="card-text">For those who are studying this course, we provide lots of necessary things. Come and check them out.</p>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+                  
+              </div>
+              <!-- English Students 3 -->
+              <div class="row">
+                <!-- Upper-Intermediate -->
+                <div class="col-md-6 pr-1">
+                  <a href="{% url 'jollywood-books' Upper %}" class="levels-link hvr-bob">
+                    <div class="card border-success mb-3">
+                      <div class="card-header"><h3>Upper-Intermediate</h3></div>
+                      <div class="card-body">
+                        <h4 class="card-title">Upper-Intermediate Resources</h4>
+                        <p class="card-text">Tasks are getting more and more complex than you had expected? Look for what you might need from here.</p>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+                <!-- Advanced -->
+                <div class="col-md-6 pr-1">
+                  <a href="{% url 'jollywood-books' Advanced %}" class="levels-link hvr-bob">
+                    <div class="card border-primary mb-3">
+                      <div class="card-header"><h3>Advanced</h3></div>
+                      <div class="card-body">
+                        <h4 class="card-title">Advanced Resources</h4>
+                        <p class="card-text">Wow! You've come so far!!! Take it till the end. We may help you with our resources.</p>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+
+              </div>
+              <!-- English Students 3 -->
+              <div class="row">
+                <!-- IELTS -->
+                <div class="col-md-12">
+                  
+                </div>
+                
+              </div>
+
+            </div>
+            {% include 'rsc/calendar.html' %}
+          </div>
+
+        </div>
+      </div>

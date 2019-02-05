@@ -1,0 +1,108 @@
+      <!-- Home Tab -->
+      <div class="tab-pane fade active show container-fluid mt-4" id="Home">
+      
+        {% include 'rsc/showcase.html' %}
+
+        <!-- Feed -->
+        <div class="row jumbotron pb-2">
+          
+          <!-- Feed -->
+          <div class="col-md-9 col-sm-8" id="feed">
+
+             <!-- Share Pop-Up Module -->
+            <div class="col-md-12 modal fade " role="dialog" id="share-popup">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+
+                  <div class="modal-header">
+                    <h3 class="modal-title">Share our website on: </h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+
+                  <div class="modal-body">
+                    <div class="row text-center">
+
+                        <div class="col-4 fb-share-button" data-href="http://jollywood.uz" data-layout="button" data-size="large" data-mobile-iframe="true">
+                          <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fjollywood.uz%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore fab pulser nav-link fa-3x fa-facebook-square" onclick="window.open(this.href, 'mywin', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"></a>
+                        </div>
+
+                      <div class="col-4">
+                        <a href="mailto:?subject=Yo! I found treasure!&amp;body=Check out this website http://www.jollywood.uz" class="fa pulser nav-link fa-3x fa-envelope"></a>
+                      </div>
+
+                      <div class="col-4">
+                        <a href="http://twitter.com/share?text=Yo! I found a great website! Check it out!!!&url=http://jollywood.uz" class="fab pulser nav-link fa-3x fa-twitter" onclick="window.open(this.href, 'mywin', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"></a>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="modal-footer mx-auto">
+                    <div class="footer-copyright text-center">© 2018 Copyright: Jollywood &trade;</div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+            <!-- Pagination Contents Go Here ... -->
+            <div id="jar" class="jumbotron pb-3" style="display: none;">
+
+              {% for post in posts %}
+              <div class="row no-gutter content mb-5">
+
+                <div class="col-md-4">
+                  <img src="{{ post.thumbnail.url }}" class="img img-thumbnail">
+                </div>
+
+                <div class="col-md-8">
+                  <div class="media">
+                    <div class="media-body">
+      
+                      <div class="mb-2">
+                        <span class="fa fa-calendar-alt img-thumbnail text-muted"> {{ post.date|date:"M d, Y" }} </span>
+                        <span class="fa fa-eye img-thumbnail"> {{ post.read }} </span>
+                        <span class="fa fa-share-alt img-thumbnail pl-2 pr-2 share" data-toggle="modal" data-target="#share-popup"></span>
+                        <span class="far fa-heart img-thumbnail"> <span class="fa">{{ post.liked }} </span></span>
+                      </div>
+
+                      <div class="card-subtitle text-bold mt-2">
+                        <img class="img img-fluid author rounded-circle" alt="Author" src="{{ post.auth.avatar.url }}">
+                        <a href="{% url 'user-profile' post.auth.username %}" class="alert alert-dismissible alert-primary pr-4 link-to-user-profile">
+                          {{ post.auth.get_full_name }} 
+                          <i class="fa fa-2x {{ post.auth.icon }} align-middle pl-2"> </i>
+                        </a>
+                      </div>
+                      <h5 class="card-title mt-3 mb-1 h4">{{ post.title }}</h5>
+                      <br>
+                      <p class="shown">{{ post.content_shown }}</p>
+                      
+                      <div id="story-{{ post.id }}" style="display: none;" class="hidden">
+                        {{ post.content_hidden }}
+                      </div>
+
+                      <span class="btn btn-primary fab fa-readme read-more" data-content="#story-{{ post.id }}"> Read more</span>
+                      {% if 'img' in post.content_hidden %}
+                      <span class="btn btn-primary fa fa-images photos" data-content=".sp-{{ post.id }}"> See Photos</span>
+                      {% endif %}
+
+                    <hr>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {% endfor %}
+
+            </div> <!-- Pagination Contents End Here ... -->
+               
+               <div class="feed pagination mb-3"> <!-- Pagination buttons -->
+               </div>
+
+          </div> <!-- Feed Finishes -->
+
+            {% include 'rsc/calendar.html' %}
+
+        </div> <!-- Feed & Calendar Row Finishes -->
+
+      </div> <!-- Home Tab Finishes -->

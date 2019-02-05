@@ -1,0 +1,118 @@
+{% extends 'rsc/base.html' %}
+
+{% block content %}
+  <!-- About Body -->
+  <div class="container">
+  	<div class="row jumbotron mt-3 pb-2">
+  	  
+  	  <!-- About Text -->
+  		<div class="col-md-9">
+  			<div class="row">
+  				
+  				<div class="col-md-4">
+  					<a href="img/about/about.jpg">
+  						<img src="img/about/about.jpg" class="img img-fluid img-thumbnail">
+  					</a>
+  					<a href="img/about/about1.jpg">
+  						<img src="img/about/about1.jpg" class="img img-fluid img-thumbnail">
+  					</a>
+  					<a href="img/about/about2.jpg">
+  						<img src="img/about/about2.jpg" class="img img-fluid img-thumbnail">
+  					</a>
+  				</div>
+
+  				<div class="col-md-8">
+
+            <div>
+              <a href="#info"></a>
+    					<h2 class="display-4">Jollywood</h2>
+    					<p class="lead">Jollywood is a small tutoring school located in a suburban town in Tashkent and is close to the center (20 - 30 minutes away). Our little institution has been helping those who want to learn languages and achieve their goals for about two years.</p>
+    					<hr class="my-3">
+    					<p>Starting with only 2 teachers and a couple of small rooms, Jollywood managed to become recognized as one of the most effective teaching centers in Uzbekistan with its supportive team, flexible timetables and affordable prices.</p>
+
+  						<canvas id="stat-0" style="display: none;" class="line-chart" width="400" height="300">
+  							
+  						</canvas>
+
+    					<i class="btn btn-primary fa fa-chart-line stats mb-2" data-content="#stat-0"> See statistics</i>
+    				</div>
+
+            <div>
+              <a href="#teachers"></a>
+              <h2 class="display-4">Our Teachers</h2>
+              <p class="lead">Jollywood has a great team of teachers who are always supportive and friendly with both teachers and students.</p>
+              <hr class="my-3">
+              <p>Currently, we have 5 teachers employed. Two of them are English teachers with high qualifications (Mr. Tokhir IELTS: 7.5, Mr. Salim IELTS: 7.5) and skills, while two others are Russian teachers with 8+ years of experience. And finally at the moment we have one Mathematics teacher, though it seems we'll have to hire more as demand for learning Math has increased in recent months.</p>
+            </div>
+
+          </div>
+
+  			</div>	
+  		</div>
+
+      {% include 'rsc/calendar.html' %}
+
+  		
+  	</div>
+  </div>
+
+
+<script type="text/javascript">
+  
+$(function () {
+  
+var ctx = $(".line-chart");
+var data = [12, 40, 55, 68, 120, 153, 117, 143, 150, 168, 170, 148, 168, 196];
+
+var config = {
+      type: 'line',
+      data: {
+        labels: ['May 2016', 'Aug 2016', 'Dec 2016', 'Feb 2017', 'May 2017', 'Jul 2017', 'Sept 2017', 'Nov 2017', 'Dec 2017', 'Mar 2018', 'Jun 2018', 'Sept 2018', 'Oct 2018', 'Nov 2018'],
+        datasets: [{
+          label: 'Number of Students',
+          backgroundColor: 'rgba(89, 49, 150, 0.7)',
+          borderColor: 'rgba(89, 49, 150, 0.7)',
+          data: data,
+          fill: false,
+        }]
+      },
+      options: {
+        responsive: true,
+        title: {
+          display: true,
+          text: 'Statistics on number of students since the opening.'
+        },
+        tooltips: {
+          mode: 'index',
+          intersect: false,
+        },
+        hover: {
+          mode: 'nearest',
+          intersect: true
+        },
+        scales: {
+          xAxes: [{
+            display: true,
+            scaleLabel: {
+              display: true,
+              labelString: 'Month and Year'
+            }
+          }],
+          yAxes: [{
+            display: true,
+            scaleLabel: {
+              display: true,
+              labelString: 'Number of Students'
+            }
+          }]
+        }
+      }
+    };
+
+var line_chart = new Chart(ctx, config);
+
+});
+
+</script>
+
+{% endblock content %}

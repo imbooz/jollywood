@@ -1,0 +1,166 @@
+{% extends 'rsc/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+		
+	<div class="container mt-5 jumbotron">
+		<div class="row">
+
+			<div class="col-md-9">
+
+				<!-- GRAMMAR BOOKS -->
+
+				<div class="custom-links toggler alert text-primary alert-primary text-center pb-3" data-content="#grammar">
+					<h1 class="far m-0 fa-plus-square float-left"></h1>
+					<h3 class="m-0">Grammar Books</h3>
+				</div>
+				
+				<div id="grammar" style="display: none;">
+				{% for book in books %}
+				{% if book.level in request.build_absolute_uri and book.category == 'Grammar' %}
+				<div class="row">
+
+					<div class="col-md-4 mb-4">
+	          <img src="{{ book.cover.url }}" alt="English Stories" class="img img-fluid img-thumbnail">
+	        </div>
+
+          <div class="col-md-8 mb-4">
+          	<div class="media">
+          		<div class="media-body">
+
+          			<h4> {{ book.title }} </h4>
+          			<br>
+          			<p> {{ book.description }} </p>
+
+          			<ul class="list-group">
+                  <li class="list-group-item d-flex justify-content-between align-items-center bg-light text-primary">
+                    Author: {{ book.author }}<br>
+                    Size: {{ book.book.size }}
+                  </li>
+                </ul>
+
+                <a class="btn btn-outline hvr-bounce-to-bottom hvr-bob fas fa-download" href="{{ book.book.url }}"> Download</a>
+
+          		</div>
+          	</div>
+          </div>
+						
+				</div>
+				<hr>
+				{% endif %}
+				{% endfor %}
+				</div>
+
+				<!-- VOCABULARY BOOKS -->
+
+				<div class="custom-links toggler alert text-primary alert-primary text-center pb-3" data-content="#vocabulary">
+					<h1 class="far m-0 fa-plus-square float-left"></h1>
+					<h3 class="m-0">Vocabulary Books</h3>
+				</div>
+				
+				<div id="vocabulary" style="display: none;">
+				{% for book in books %}
+				{% if book.level in request.build_absolute_uri and book.category == 'Vocabulary' %}
+				<div class="row">
+
+					<div class="col-md-4 mb-4">
+	          <img src="{{ book.cover.url }}" alt="English Stories" class="img img-fluid img-thumbnail">
+	        </div>
+
+          <div class="col-md-8 mb-4">
+          	<div class="media">
+          		<div class="media-body">
+
+          			<h4> {{ book.title }} </h4>
+          			<br>
+          			<p> {{ book.description }} </p>
+
+          			<ul class="list-group">
+                  <li class="list-group-item d-flex justify-content-between align-items-center bg-light text-primary">
+                    Author: {{ book.author }}<br>
+                    Size: {{ book.book.size }}
+                  </li>
+                </ul>
+
+                <a class="btn btn-outline hvr-bounce-to-bottom hvr-bob fas fa-download" href="{{ book.book.url }}"> Download</a>
+
+          		</div>
+          	</div>
+          </div>
+						
+				</div>
+				<hr>
+				{% endif %}
+				{% endfor %}
+				</div>
+
+
+				<!-- STORY BOOKS -->
+
+				<div class="custom-links toggler alert text-primary alert-primary text-center pb-3" data-content="#stories">
+					<h1 class="far m-0 fa-plus-square float-left"></h1>
+					<h3 class="m-0">Books for Reading</h3>
+				</div>
+				
+				<div id="stories" style="display: none;">
+				{% for book in books %}
+				{% if book.level in request.build_absolute_uri and book.category == 'Story' %}
+				<div class="row">
+
+					<div class="col-md-4 mb-4">
+	          <img src="{{ book.cover.url }}" alt="English Stories" class="img img-fluid img-thumbnail">
+	        </div>
+
+          <div class="col-md-8 mb-4">
+          	<div class="media">
+          		<div class="media-body">
+
+          			<h4> {{ book.title }} </h4>
+          			<br>
+          			<p> {{ book.description }} </p>
+
+          			<ul class="list-group">
+                  <li class="list-group-item d-flex justify-content-between align-items-center bg-light text-primary">
+                    Author: {{ book.author }}<br>
+                    Size: {{ book.book.size }}
+                  </li>
+                </ul>
+
+                <a class="btn btn-outline hvr-bounce-to-bottom hvr-bob fas fa-download" href="{{ book.book.url }}"> Download</a>
+
+          		</div>
+          	</div>
+          </div>
+						
+				</div>
+				<hr>
+				{% endif %}
+				{% endfor %}
+				</div>
+
+			</div>
+
+
+			{% include 'rsc/calendar.html' %}		
+			
+		</div>
+
+
+	</div>
+
+	<script>
+
+		$(".toggler").on("click", function(){
+
+	    var books_to_show = $(this).attr("data-content");
+  	  $(books_to_show).slideToggle(700); 
+
+  	  var b = $(this);
+			var a = b[0].children[0];
+			$(a).toggleClass('fa-plus-square fa-minus-square');
+
+    });
+
+	
+	</script>
+
+{% endblock content %}

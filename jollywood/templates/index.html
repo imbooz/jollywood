@@ -1,0 +1,27 @@
+{% extends 'rsc/base.html' %}
+<!-- Block Content should wrap everything and give me my navigation panel and footer -->
+{% block content %}
+<!-- Facebook SDK -->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/ru_RU/sdk.js#xfbml=1&version=v3.1';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+<div class="container-fluid">
+  {% include 'rsc/tab.html' %} <!-- Tab -->
+  <div id="myTabContent" class="tab-content">
+    {% include 'rsc/home_tab.html' %}
+
+    {% include 'rsc/students_tab.html' %}
+
+    {% include 'rsc/test_tab.html' %}
+  </div>
+</div>
+
+
+{% endblock content %}

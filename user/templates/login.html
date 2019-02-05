@@ -1,0 +1,43 @@
+{% extends 'rsc/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+		
+	<div class="container mt-5 jumbotron">
+		<div class="row">
+
+			<div class="col-md-9">
+					<div class="content-section">
+					  {% if messages %}
+					    {% for message in messages %}
+					      <div class="alert alert-{{ message.tags }} text-center">
+					        {{ message }}
+					      </div>
+					    {% endfor %}
+					  {% endif %}
+						<form method="POST">
+							{% csrf_token %}
+							<fieldset class="form-group">
+								<legend class="border-bottom mb-3 text-primary display-4 text-center">Log In</legend>
+
+								<div class="mx-5">
+									{{ form|crispy }}
+									<div class="form-group">
+										<button type="submit" class="btn btn-outline bg-white btn-lg hvr-underline-from-center">Login</button>
+									</div>
+								</div>
+							</fieldset>
+						</form>
+
+						<div class="border-top pt-3">
+							<p class="text-muted">Need an account? <a href="{% url 'user-register' %}" class="ml-2 text-primary">Sign Up Now</a></p> 
+						</div>
+
+					</div>
+			</div>
+
+			{% include 'rsc/calendar.html' %}		
+			
+		</div>
+	</div>
+
+{% endblock content %}

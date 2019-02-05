@@ -1,0 +1,123 @@
+{% extends 'rsc/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+		
+	<div class="container mt-5 ">
+		<div class="row jumbotron">
+			<div class="col-sm-3">
+				<h4 class="card-title">{{ User.get_full_name }} <i class="fa {{ User.icon }} ml-1"></i></h4>
+				<div class="card p-2">
+					<img src="{{ User.avatar.url }}" class="img img-thumbnail rounded-circle card-img-top">
+					<div class="card-body">
+						{% if User.title == 'Teacher' %}
+						<h5 class="card-title">{{ User.title }}</h5>
+						<h6 class="card-title">Course: {{ User.course }}</h6>
+						{% else %}
+						<h5 class="card-title">{{ User.title }}</h5>
+						<h6 class="card-text">Course: {{ User.course }} {{ User.level }}</h6>
+						{% endif %}
+					</div>
+				</div>
+				<br>
+				<hr>
+				<legend>Bio:</legend>
+				<div class="card-body card">
+					{% if User.bio %}
+					<p class="card-text text-center">{{ User.bio }}</p>
+					{% else %}
+					<p class="card-text text-center alert alert-warning alert-dismissable">There is no biography for {{ User.first_name }}</p>
+					{% endif %}
+
+					{% if User.username == user.username %}
+					<form method="POST" enctype="multipart/form-data">
+						{% csrf_token %}
+						<div style="display: none" id="bio-change">
+							{{ form|crispy }}
+							<button class="btn border-success bg-white hvr-icon-bob text-success btn-sm form-group float-right" type="submit">Edit <i class="far fa-edit ml-1 hvr-icon"></i></button>
+						</div>
+					</form>
+					<button class="btn border-primary text-primary bg-white hvr-icon-bob" id="bio-toggle">Update bio<i class="fa fa-pen-fancy hvr-icon ml-2"></i></button>
+					{% endif %}
+
+				</div>
+			</div>
+
+			<div class="col-sm-6">
+				<!-- Here Should be all the charts and so on so on so on so on so on so on -->
+			</div>
+
+			<div class="col-sm-3">
+				<div class="card p-2">
+					<legend>Account Info:</legend>
+					<p class="card-text text-muted"><i class="fas fa-at mr-2"></i>Username: {{ User.username }}</p>
+					<p class="card-text text-muted"><i class="fa fa-map-marker-alt mr-2"></i>From: {{ User.country }}</p>
+					<p class="card-text text-muted"><i class="far fa-clock mr-2"></i>Last login: {{ User.last_login|date:"M d, H:i" }}</p>
+					<p class="card-text text-muted"><i class="fas fa-envelope mr-2"></i>Email: {{ User.email }}</p>
+					<p class="card-text text-muted"><i class="fas fa-history mr-2"></i>Joined on: {{ User.date_joined|date:"M d, Y" }}</p>
+					<br>
+				</div>
+				<hr>
+				<div class="card p-2">
+					<legend>Social Accounts:</legend>
+					{% if User.instagram %}
+					<p class="card-text text-muted"><i class="fab fa-lg fa-instagram mr-2"></i>Instagram: {{ User.instagram }}</p>
+					{% endif %}
+					{% if User.facebook %}
+					<p class="card-text text-muted"><i class="fab fa-lg fa-facebook mr-2"></i>Facebook: {{ User.facebook }}</p>
+					{% endif %}
+					{% if User.twitter %}
+					<p class="card-text text-muted"><i class="fab fa-lg fa-twitter mr-2"></i>Twitter: {{ User.twitter }}</p>
+					{% endif %}
+					{% if User.telegram %}
+					<p class="card-text text-muted"><i class="fab fa-lg fa-telegram-plane mr-2"></i>Telegram: {{ User.telegram }}</p>
+					{% endif %}
+					{% if not User.telegram and not User.twitter and not User.facebook and not User.instagram %}
+					<p>There are no accounts added!</p>
+					{% endif %}
+				</div>
+				<hr>
+				{% if User.username == user.username %}
+				<div class="card p-2">
+					<a href="{% url 'user-profile-edit' User.username %}" class="btn border-warning bg-white hvr-icon-bob text-warning">Edit Profile Info<i class="fa far fa-edit hvr-icon ml-2"></i></a>
+				</div>
+				{% endif %}
+			</div>
+		</div>
+		<div class="row jumbotron">
+			{% if User.status_set.all %}
+				{% for status in User.status_set.all %}
+					<div class="card p-2 mb-2">
+						<img src="{{ status.img.url }}" class="card-img-top img img-thumbnail">
+						<div class="card-body">
+							<h5 class="card-title">{{ status.text }}</h5>
+							<small class="card-text float-right text-muted">{{ status.time }}</small>
+						</div>
+					</div>
+					<hr>
+				{% endfor %}
+			{% else %}
+			<h3 class="alert alert-warning alert-dismissable mx-auto">There are no statuses for {{ User.first_name }}</h3>
+			{% endif %}
+		</div>
+	</div>
+	
+	<script>
+	
+		$(function() {
+			
+			$('#bio-toggle').on('click', function(){
+				$('#bio-change').toggle(300)
+
+				if($(this).html() == 'Update bio<i class="fa fa-pen-fancy hvr-icon ml-2"></i>'){
+					$(this).html('Cancel<i class="fa fa-times-circle hvr-icon ml-2"></i>')
+				} else {
+					$(this).html('Update bio<i class="fa fa-pen-fancy hvr-icon ml-2"></i>')
+				}
+
+			});
+
+		});
+
+	</script>
+
+{% endblock content %}

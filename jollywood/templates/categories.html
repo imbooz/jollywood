@@ -1,0 +1,140 @@
+{% extends 'rsc/base.html' %}
+
+{% block content %}
+		
+		<div class="containers"> 
+			<div class="row jumbotron mt-2 mb-2">
+				<div class="col-md-9">
+					 <ol class="breadcrumb">
+			          	<li class="breadcrumb-item avtive">
+			          		{% if Book.level == 'Pre' %}
+			          			Pre-Intermediate
+			          		{% elif Book.level == 'Upper' %}
+			          			Upper-Intermediate
+			          		{% else %}
+			          			{{ Book.level }}
+			          		{% endif %}
+			          	</li>
+			          </ol>
+
+					<div class="row">
+						<div class="col-md-12">
+							<div class="row no-gutter content">
+								<div class="col-sm-4 mb-4">
+									<img src="img/contents/grammar.png" alt="Grammar" class="img img-fluid img-thumbnail">
+								</div>
+
+								<div class="col-sm-8 mb-4">
+									<div class="media">
+					                    <div class="media-body">
+					                      	
+					                      	<h4 class="card-title m-1">Grammar Content</h4>
+
+					                      	<p class="shown">
+					                        	Here you can find some useful materials which are very useful in your beginner course. We have a collection of all the necessary things you would need.
+					                      	</p>
+
+					                      	<a class="btn btn-primary fa fa-file-alt" href="#" style="font-weight: 500;">
+					                      		<span style="font-weight: 700;"> Go to contents</span>
+					                      	</a>
+
+					                    </div>
+					                </div>
+								</div>
+								
+							</div>
+						</div>
+					</div>
+					<hr>
+
+					<div class="row">
+						<div class="col-md-12">
+							<div class="row no-gutter content">
+								<div class="col-sm-4 mb-4">
+									<img src="img/contents/vocabulary.jpg" alt="Vocabulary" class="img img-fluid img-thumbnail">
+								</div>
+
+								<div class="col-sm-8 mb-4">
+									<div class="media">
+					                    <div class="media-body">
+					                      	
+					                      	<h4 class="card-title m-1">Vocabulary Content</h4>
+
+					                      	<p class="shown">
+					                        	One of the key factors in learning a language is having a strong vocabulary, because no matter how well you know the grammar there is no use if you don't have necessary 'database' of words you need. Here we provide some useful materials for you to build a strong vocabulary.
+					                      	</p>
+
+					                      	<a class="btn btn-primary fa fa-language" href="#"> Go to contents</a>
+
+					                    </div>
+					                </div>
+								</div>
+								
+							</div>
+						</div>
+					</div>
+					<hr>
+
+					<div class="row">
+						<div class="col-md-12">
+							<div class="row no-gutter content">
+								<div class="col-sm-4 mb-4">
+									<img src="img/contents/stories.jpg" alt="Reading Materials" class="img img-fluid img-thumbnail">
+								</div>
+
+								<div class="col-sm-8 mb-4">
+									<div class="media">
+					                    <div class="media-body">
+					                      	
+					                      	<h4 class="card-title m-1">Reading Materials</h4>
+
+					                      	<p class="shown">
+					                        	Collection of various books for beginner students. Here you can find number of small stories suitable for your level.
+					                      	</p>
+
+					                      	<a class="btn btn-primary fa fa-book" href="#""> Go to contents</a>
+
+					                    </div>
+					                </div>
+								</div>
+								
+							</div>
+						</div>
+					</div>
+					<hr>
+
+					<div class="row">
+						<div class="col-md-12">
+							<div class="row no-gutter content">
+								<div class="col-sm-4 mb-4">
+									<img src="img/contents/video.png" alt="Video Lessons" class="img img-fluid img-thumbnail">
+								</div>
+
+								<div class="col-sm-8 mb-4">
+									<div class="media">
+					                    <div class="media-body">
+					                      	
+					                      	<h4 class="card-title m-1">Video Lessons</h4>
+
+					                      	<p class="shown">
+					                        	Coming soon...
+					                      	</p>
+
+					                      	<a class="btn disabled btn-primary fa fa-video" href="#""> Go to contents</a>
+
+					                    </div>
+					                </div>
+								</div>
+								
+							</div>
+						</div>
+					</div>
+					
+				</div>
+
+				{% include 'rsc/calendar.html' %}
+
+			</div>
+		</div>
+
+{% endblock content %}
