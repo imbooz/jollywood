@@ -1,9 +1,43 @@
 {% extends 'rsc/base.html' %}
-
+{% load crispy_forms_tags %}
 {% block content %}
 		
-		<div class="containers"> 
-			Contact us HAHAHHAHAH
+	<div class="container mt-5 jumbotron">
+		<div class="row">
+
+			<div class="col-md-9">
+				<div class="content-section row">		
+					<div class="col-md-7">
+    					<h2>Contact us:</h2>
+    					<p class="h5">
+    						Tel: <p><a href="tel:+998-97-733-4546">+998 97 733 45 46</a></p>
+    					</p>
+    					<p class="h5">
+    						E-mail: <p><a href="mailto:bakhtiyorov2696@mail.ru">bakhtiyorov2696@mail.ru</a></p>
+    					</p>
+    					<p class="h5">
+    						Instagram: <p><a href="https://instagram.com/jollywood_teaching_centre">@jollywood_teaching_centre</a></p>
+    					</p>
+    					<p class="h5">
+    						Telegram: <p><a href="https://t.me/jollywooden">@Jollywooden</a>, <a href="https://t.me/imbooz">@Imbooz</a></p>
+    					</p>	
+    				</div>
+
+    				<div class="col-md-5">
+    					<h2>Our location:</h2>
+    					<div class="map pb-2" style="width:100%;">
+            				<a href="https://www.google.com/maps/place/Jollywood/@41.3962087,69.259542,16.15z/data=!4m8!1m2!2m1!1sjollywood!3m4!1s0x38ae8db27de8c7e7:0xab5a736ddccd7d31!8m2!3d41.3969251!4d69.2632399">
+              				<img src="img/map.jpg" class="img img-thumbnail img-fluid">
+            				</a>
+          				</div>
+    				</div>
+				</div>
+			</div>
+
+			{% include 'rsc/calendar.html' %}	
+			
 		</div>
+
+	</div>
 
 {% endblock content %}
