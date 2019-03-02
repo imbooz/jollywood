@@ -1,0 +1,263 @@
+{% extends 'rsc/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+    
+  <div class="container mt-5 jumbotron">
+            <div class="row">
+              <div class="col-md-3 card border-primary p-2 m-1 text-center">
+                <div class="sticky-top">
+                  <h3>Level Test</h3>
+
+                  <div class="timer mx-auto pr-5 pl-5 pb-3">
+                    <h5>Time Remaining</h5>
+                      
+                    <div class="pt-5 mx-auto pb-5 card block-inline">
+                      <p class="h3 mt-3"><span id="minutes">Min</span> : <span id="seconds">Sec</span></p>
+                    </div>
+
+                  </div>
+                  <button class="btn btn-outline-primary mt-3 w-100" id="start-test"><i class="fa fa-timer"></i> Start</button>
+                </div>
+              </div> <!-- First Column Finishes -->
+
+              <div class="col-md-5 card border-primary p-2 m-1">
+
+                <div class="alerter alert-secondary p-3 m-1 text-center align-middle" style="display: show;">
+                  <h6 class="h5">
+                    Quick Placement & Diagnostic Test
+                  </h6 class="h5">
+                </div>
+                <div class="alerter alert-info p-3 m-1 text-center align-middle" style="display: show;">
+                  <p>
+                    This test is based on Macmillan Publisher's Straightforward book series and has 50 questions, each worth one point. The first 40 are grammar questions and the final 10 are vocabulary questions. You will be given 30 minutes to take the test. Please make sure you think carefully and give your answer, because you have only one chance!
+                  </p>
+                </div>
+                <div class="alerter alert-warning p-3 m-1 text-center align-middle" style="display: show;">
+                  <p>
+                    Please click on 'Start' button when you are ready!<br> Do not click the stop button before you finish or you will lose one point for each question left unanswered.
+                  </p>
+                </div> 
+
+                <div id="test-area" class="p-3 m-0" style="display: none;">
+                  <div class="form-inline">
+                    <input type="text" name="name" id="name" placeholder="Enter your name here" class="form-control mr-3">
+                  </div>
+                  <h4 class="h3 pt-2">Grammar</h4>
+
+                  <div class="text-left">
+                    <label class="h4 p-2">1.  I ___ from France.</label><br>
+                    <button class="btn btn-outline-info q mb-2 w-50" data-answer="correct"><i class="fas fa-angle-right float-left mt-1"></i> am </button>
+                    <button class="btn btn-outline-info q mb-2 w-50" data-answer="incorrect"><i class="fas fa-angle-right float-left mt-1"></i> is </button>
+                    <button class="btn btn-outline-info q mb-2 w-50" data-answer="incorrect"><i class="fas fa-angle-right float-left mt-1"></i> are </button>
+                    <button class="btn btn-outline-info q mb-2 w-50" data-answer="incorrect"><i class="fas fa-angle-right float-left mt-1"></i> be </button> 
+                  </div>
+
+                  <div class="text-left">
+                    <label class="h4 p-2">2.  This is my friend. ___ Name is Peter.</label><br>
+                    <button class="btn btn-outline-info q mb-2 w-50" data-answer="incorrect"><i class="fas fa-angle-right float-left mt-1"></i> Her </button>
+                    <button class="btn btn-outline-info q mb-2 w-50" data-answer="correct"><i class="fas fa-angle-right float-left mt-1"></i> His </button>
+                    <button class="btn btn-outline-info q mb-2 w-50" data-answer="incorrect"><i class="fas fa-angle-right float-left mt-1"></i> Our </button>
+                    <button class="btn btn-outline-info q mb-2 w-50" data-answer="incorrect"><i class="fas fa-angle-right float-left mt-1"></i> Your </button> 
+                  </div>
+
+                  <div class="text-left">
+                    <label class="h4 p-2">3.  Mike is ________.</label><br>
+                    <button class="btn btn-outline-info q mb-2 w-50" data-answer="correct"><i class="fas fa-angle-right float-left mt-1"></i> my sister's friend </button>
+                    <button class="btn btn-outline-info q mb-2 w-50" data-answer="incorrect"><i class="fas fa-angle-right float-left mt-1"></i> friend my sister </button>
+                    <button class="btn btn-outline-info q mb-2 w-50" data-answer="incorrect"><i class="fas fa-angle-right float-left mt-1"></i> friend from my sister </button>
+                    <button class="btn btn-outline-info q mb-2 w-50" data-answer="incorrect"><i class="fas fa-angle-right float-left mt-1"></i> my sister friend's </button> 
+                  </div>
+
+                  <div class="text-left">
+                    <label class="h4 p-2">4.  My brother is ___ artist.</label><br>
+                    <button class="btn btn-outline-info q mb-2 w-50" data-answer="incorrect"><i class="fas fa-angle-right float-left mt-1"></i> the </button>
+                    <button class="btn btn-outline-info q mb-2 w-50" data-answer="correct"><i class="fas fa-angle-right float-left mt-1"></i> an </button>
+                    <button class="btn btn-outline-info q mb-2 w-50" data-answer="incorrect"><i class="fas fa-angle-right float-left mt-1"></i> a </button>
+                    <button class="btn btn-outline-info q mb-2 w-50" data-answer="incorrect"><i class="fas fa-angle-right float-left mt-1"></i> - </button> 
+                  </div>
+
+                  <div class="text-left">
+                    <label class="h4 p-2">5.  ________ 20 desks in the classroom.</label><br>
+                    <button class="btn btn-outline-info q mb-2 w-50" data-answer="incorrect"><i class="fas fa-angle-right float-left mt-1"></i> This is </button>
+                    <button class="btn btn-outline-info q mb-2 w-50" data-answer="incorrect"><i class="fas fa-angle-right float-left mt-1"></i> There is </button>
+                    <button class="btn btn-outline-info q mb-2 w-50" data-answer="incorrect"><i class="fas fa-angle-right float-left mt-1"></i> They are </button>
+                    <button class="btn btn-outline-info q mb-2 w-50" data-answer="correct"><i class="fas fa-angle-right float-left mt-1"></i> There are </button> 
+                  </div>
+
+                  <div class="text-left">
+                    <label class="h4 p-2">6.  Paul ________ romantic films</label><br>
+                    <button class="btn btn-outline-info q mb-2 w-50" data-answer="incorrect"><i class="fas fa-angle-right float-left mt-1"></i> likes not </button>
+                    <button class="btn btn-outline-info q mb-2 w-50" data-answer="incorrect"><i class="fas fa-angle-right float-left mt-1"></i> don't like </button>
+                    <button class="btn btn-outline-info q mb-2 w-50" data-answer="correct"><i class="fas fa-angle-right float-left mt-1"></i> doesn't like </button>
+                    <button class="btn btn-outline-info q mb-2 w-50" data-answer="incorrect"><i class="fas fa-angle-right float-left mt-1"></i> isn't likes </button> 
+                  </div>
+
+                  <div class="text-left">
+                    <label class="h4 p-2">7.  Sorry, I can't talk. I ________ right now.</label><br>
+                    <button class="btn btn-outline-info q mb-2 w-50" data-answer="incorrect"><i class="fas fa-angle-right float-left mt-1"></i> driving </button>
+                    <button class="btn btn-outline-info q mb-2 w-50" data-answer="correct"><i class="fas fa-angle-right float-left mt-1"></i> 'm driving </button>
+                    <button class="btn btn-outline-info q mb-2 w-50" data-answer="incorrect"><i class="fas fa-angle-right float-left mt-1"></i> drives </button>
+                    <button class="btn btn-outline-info q mb-2 w-50" data-answer="incorrect"><i class="fas fa-angle-right float-left mt-1"></i> drive </button> 
+                  </div>
+
+                  <div class="text-left">
+                    <label class="h4 p-2">8.  She ________ at school last week.</label><br>
+                    <button class="btn btn-outline-info q mb-2 w-50" data-answer="incorrect"><i class="fas fa-angle-right float-left mt-1"></i> didn't be </button>
+                    <button class="btn btn-outline-info q mb-2 w-50" data-answer="incorrect"><i class="fas fa-angle-right float-left mt-1"></i> weren't </button>
+                    <button class="btn btn-outline-info q mb-2 w-50" data-answer="correct"><i class="fas fa-angle-right float-left mt-1"></i> wasn't </button>
+                    <button class="btn btn-outline-info q mb-2 w-50" data-answer="incorrect"><i class="fas fa-angle-right float-left mt-1"></i> isn't </button> 
+                  </div>
+
+                  <div class="text-left">
+                    <label class="h4 p-2">9.  I ________ the film last night.</label><br>
+                    <button class="btn btn-outline-info q mb-2 w-50" data-answer="incorrect"><i class="fas fa-angle-right float-left mt-1"></i> like </button>
+                    <button class="btn btn-outline-info q mb-2 w-50" data-answer="incorrect"><i class="fas fa-angle-right float-left mt-1"></i> likes </button>
+                    <button class="btn btn-outline-info q mb-2 w-50" data-answer="incorrect"><i class="fas fa-angle-right float-left mt-1"></i> liking </button>
+                    <button class="btn btn-outline-info q mb-2 w-50" data-answer="correct"><i class="fas fa-angle-right float-left mt-1"></i> liked </button> 
+                  </div>
+
+                  <div class="text-left">
+                    <label class="h4 p-2">10.  ________ piece of cake? No, thanks.</label><br>
+                    <button class="btn btn-outline-info q mb-2 w-50" data-answer="incorrect"><i class="fas fa-angle-right float-left mt-1"></i> Do you like </button>
+                    <button class="btn btn-outline-info q mb-2 w-50" data-answer="correct"><i class="fas fa-angle-right float-left mt-1"></i> Would you like </button>
+                    <button class="btn btn-outline-info q mb-2 w-50" data-answer="incorrect"><i class="fas fa-angle-right float-left mt-1"></i> Want you like </button>
+                    <button class="btn btn-outline-info q mb-2 w-50" data-answer="incorrect"><i class="fas fa-angle-right float-left mt-1"></i> Are you like </button> 
+                  </div>
+
+                  <div class="text-left">
+                    <label class="h4 p-2">11. The living room is ________ than the bedroom.</label><br>
+                    <button class="btn btn-outline-info q mb-2 w-50" data-answer="incorrect"><i class="fas fa-angle-right float-left mt-1"></i> more big </button>
+                    <button class="btn btn-outline-info q mb-2 w-50" data-answer="incorrect"><i class="fas fa-angle-right float-left mt-1"></i> more bigger </button>
+                    <button class="btn btn-outline-info q mb-2 w-50" data-answer="incorrect"><i class="fas fa-angle-right float-left mt-1"></i> biggest </button>
+                    <button class="btn btn-outline-info q mb-2 w-50" data-answer="correct"><i class="fas fa-angle-right float-left mt-1"></i> bigger </button> 
+                  </div>
+
+                  <div class="text-left">
+                    <label class="h4 p-2">12. The car is very old. We’re going ________ a new car soon.</label><br>
+                    <button class="btn btn-outline-info q mb-2 w-50" data-answer="correct"><i class="fas fa-angle-right float-left mt-1"></i> to buy </button>
+                    <button class="btn btn-outline-info q mb-2 w-50" data-answer="incorrect"><i class="fas fa-angle-right float-left mt-1"></i> buying </button>
+                    <button class="btn btn-outline-info q mb-2 w-50" data-answer="incorrect"><i class="fas fa-angle-right float-left mt-1"></i> to will buy </button>
+                    <button class="btn btn-outline-info q mb-2 w-50" data-answer="incorrect"><i class="fas fa-angle-right float-left mt-1"></i> buy </button> 
+                  </div>
+
+                  <div class="text-left">
+                    <label class="h4 p-2">13. Jane is a vegetarian. She ________ meat. </label><br>
+                    <button class="btn btn-outline-info q mb-2 w-50" data-answer="incorrect"><i class="fas fa-angle-right float-left mt-1"></i> sometimes eats </button>
+                    <button class="btn btn-outline-info q mb-2 w-50" data-answer="correct"><i class="fas fa-angle-right float-left mt-1"></i> never eats </button>
+                    <button class="btn btn-outline-info q mb-2 w-50" data-answer="incorrect"><i class="fas fa-angle-right float-left mt-1"></i> often eats </button>
+                    <button class="btn btn-outline-info q mb-2 w-50" data-answer="incorrect"><i class="fas fa-angle-right float-left mt-1"></i> usually eats </button> 
+                  </div>
+
+                  <div class="text-left">
+                    <label class="h4 p-2">14. There aren't ________ buses late in the evening. </label><br>
+                    <button class="btn btn-outline-info q mb-2 w-50" data-answer="incorrect"><i class="fas fa-angle-right float-left mt-1"></i> some </button>
+                    <button class="btn btn-outline-info q mb-2 w-50" data-answer="correct"><i class="fas fa-angle-right float-left mt-1"></i> any </button>
+                    <button class="btn btn-outline-info q mb-2 w-50" data-answer="incorrect"><i class="fas fa-angle-right float-left mt-1"></i> no </button>
+                    <button class="btn btn-outline-info q mb-2 w-50" data-answer="incorrect"><i class="fas fa-angle-right float-left mt-1"></i> a </button> 
+                  </div>
+
+                  <div class="text-left">
+                    <label class="h4 p-2">15. The car park is ________ to the restaurant. </label><br>
+                    <button class="btn btn-outline-info q mb-2 w-50" data-answer="correct"><i class="fas fa-angle-right float-left mt-1"></i> next </button>
+                    <button class="btn btn-outline-info q mb-2 w-50" data-answer="incorrect"><i class="fas fa-angle-right float-left mt-1"></i> opposite </button>
+                    <button class="btn btn-outline-info q mb-2 w-50" data-answer="incorrect"><i class="fas fa-angle-right float-left mt-1"></i> behind </button>
+                    <button class="btn btn-outline-info q mb-2 w-50" data-answer="incorrect"><i class="fas fa-angle-right float-left mt-1"></i> in front </button> 
+                  </div>
+
+                  <div class="text-left">
+                    <label class="h4 p-2">abcd</label><br>
+                    <button class="btn btn-outline-info q mb-2 w-50" data-answer="incorrect"><i class="fas fa-angle-right float-left mt-1"></i> My </button>
+                    <button class="btn btn-outline-info q mb-2 w-50" data-answer="incorrect"><i class="fas fa-angle-right float-left mt-1"></i> His </button>
+                    <button class="btn btn-outline-info q mb-2 w-50" data-answer="incorrect"><i class="fas fa-angle-right float-left mt-1"></i> Her </button>
+                    <button class="btn btn-outline-info q mb-2 w-50" data-answer="incorrect"><i class="fas fa-angle-right float-left mt-1"></i> be </button> 
+                  </div>
+
+                  <div class="text-left">
+                    <label class="h4 p-2">abcd</label><br>
+                    <button class="btn btn-outline-info q mb-2 w-50" data-answer="incorrect"><i class="fas fa-angle-right float-left mt-1"></i> My </button>
+                    <button class="btn btn-outline-info q mb-2 w-50" data-answer="incorrect"><i class="fas fa-angle-right float-left mt-1"></i> His </button>
+                    <button class="btn btn-outline-info q mb-2 w-50" data-answer="incorrect"><i class="fas fa-angle-right float-left mt-1"></i> Her </button>
+                    <button class="btn btn-outline-info q mb-2 w-50" data-answer="incorrect"><i class="fas fa-angle-right float-left mt-1"></i> be </button> 
+                  </div>
+
+                  <div class="text-left">
+                    <label class="h4 p-2">abcd</label><br>
+                    <button class="btn btn-outline-info q mb-2 w-50" data-answer="incorrect"><i class="fas fa-angle-right float-left mt-1"></i> My </button>
+                    <button class="btn btn-outline-info q mb-2 w-50" data-answer="incorrect"><i class="fas fa-angle-right float-left mt-1"></i> His </button>
+                    <button class="btn btn-outline-info q mb-2 w-50" data-answer="incorrect"><i class="fas fa-angle-right float-left mt-1"></i> Her </button>
+                    <button class="btn btn-outline-info q mb-2 w-50" data-answer="incorrect"><i class="fas fa-angle-right float-left mt-1"></i> be </button> 
+                  </div>
+
+                  <div class="text-left">
+                    <label class="h4 p-2">abcd</label><br>
+                    <button class="btn btn-outline-info q mb-2 w-50" data-answer="incorrect"><i class="fas fa-angle-right float-left mt-1"></i> My </button>
+                    <button class="btn btn-outline-info q mb-2 w-50" data-answer="incorrect"><i class="fas fa-angle-right float-left mt-1"></i> His </button>
+                    <button class="btn btn-outline-info q mb-2 w-50" data-answer="incorrect"><i class="fas fa-angle-right float-left mt-1"></i> Her </button>
+                    <button class="btn btn-outline-info q mb-2 w-50" data-answer="incorrect"><i class="fas fa-angle-right float-left mt-1"></i> be </button> 
+                  </div>
+
+                  <div class="text-left">
+                    <label class="h4 p-2">abcd</label><br>
+                    <button class="btn btn-outline-info q mb-2 w-50" data-answer="incorrect"><i class="fas fa-angle-right float-left mt-1"></i> My </button>
+                    <button class="btn btn-outline-info q mb-2 w-50" data-answer="incorrect"><i class="fas fa-angle-right float-left mt-1"></i> His </button>
+                    <button class="btn btn-outline-info q mb-2 w-50" data-answer="incorrect"><i class="fas fa-angle-right float-left mt-1"></i> Her </button>
+                    <button class="btn btn-outline-info q mb-2 w-50" data-answer="incorrect"><i class="fas fa-angle-right float-left mt-1"></i> be </button> 
+                  </div>
+
+                  <div class="text-left">
+                    <label class="h4 p-2">abcd</label><br>
+                    <button class="btn btn-outline-info q mb-2 w-50" data-answer="incorrect"><i class="fas fa-angle-right float-left mt-1"></i> My </button>
+                    <button class="btn btn-outline-info q mb-2 w-50" data-answer="incorrect"><i class="fas fa-angle-right float-left mt-1"></i> His </button>
+                    <button class="btn btn-outline-info q mb-2 w-50" data-answer="incorrect"><i class="fas fa-angle-right float-left mt-1"></i> Her </button>
+                    <button class="btn btn-outline-info q mb-2 w-50" data-answer="incorrect"><i class="fas fa-angle-right float-left mt-1"></i> be </button> 
+                  </div>
+
+                  <div class="text-left">
+                    <label class="h4 p-2">abcd</label><br>
+                    <button class="btn btn-outline-info q mb-2 w-50" data-answer="incorrect"><i class="fas fa-angle-right float-left mt-1"></i> My </button>
+                    <button class="btn btn-outline-info q mb-2 w-50" data-answer="incorrect"><i class="fas fa-angle-right float-left mt-1"></i> His </button>
+                    <button class="btn btn-outline-info q mb-2 w-50" data-answer="incorrect"><i class="fas fa-angle-right float-left mt-1"></i> Her </button>
+                    <button class="btn btn-outline-info q mb-2 w-50" data-answer="incorrect"><i class="fas fa-angle-right float-left mt-1"></i> be </button> 
+                  </div>
+
+                  <div class="text-left">
+                    <label class="h4 p-2">abcd</label><br>
+                    <button class="btn btn-outline-info q mb-2 w-50" data-answer="incorrect"><i class="fas fa-angle-right float-left mt-1"></i> My </button>
+                    <button class="btn btn-outline-info q mb-2 w-50" data-answer="incorrect"><i class="fas fa-angle-right float-left mt-1"></i> His </button>
+                    <button class="btn btn-outline-info q mb-2 w-50" data-answer="incorrect"><i class="fas fa-angle-right float-left mt-1"></i> Her </button>
+                    <button class="btn btn-outline-info q mb-2 w-50" data-answer="incorrect"><i class="fas fa-angle-right float-left mt-1"></i> be </button> 
+                  </div>
+
+                  <div class="text-left">
+                    <label class="h4 p-2">abcd</label><br>
+                    <button class="btn btn-outline-info q mb-2 w-50" data-answer="incorrect"><i class="fas fa-angle-right float-left mt-1"></i> My </button>
+                    <button class="btn btn-outline-info q mb-2 w-50" data-answer="incorrect"><i class="fas fa-angle-right float-left mt-1"></i> His </button>
+                    <button class="btn btn-outline-info q mb-2 w-50" data-answer="incorrect"><i class="fas fa-angle-right float-left mt-1"></i> Her </button>
+                    <button class="btn btn-outline-info q mb-2 w-50" data-answer="incorrect"><i class="fas fa-angle-right float-left mt-1"></i> be </button> 
+                  </div>
+
+                  <div class="text-left">
+                    <label class="h4 p-2">abcd</label><br>
+                    <button class="btn btn-outline-info q mb-2 w-50" data-answer="incorrect"><i class="fas fa-angle-right float-left mt-1"></i> My </button>
+                    <button class="btn btn-outline-info q mb-2 w-50" data-answer="incorrect"><i class="fas fa-angle-right float-left mt-1"></i> His </button>
+                    <button class="btn btn-outline-info q mb-2 w-50" data-answer="incorrect"><i class="fas fa-angle-right float-left mt-1"></i> Her </button>
+                    <button class="btn btn-outline-info q mb-2 w-50" data-answer="incorrect"><i class="fas fa-angle-right float-left mt-1"></i> be </button> 
+                  </div>
+
+                </div> <!-- Test Area Finishes -->
+
+              </div> <!-- Second Column Finishes -->
+
+              <div id="result" class="col-md-3 card border-primary p-2 m-1 text-left">
+                <div class="sticky-top">
+                  <p class="text-success h5">Number of correct answers: <span class="correct"></span></p>
+                  <p class="text-danger h5">Number of incorrect answers: <span class="incorrect"></span></p>
+                  <p class="text-warning h5">Not answered: <span class="unanswered"></span></p>
+                  <p class="text-info h5">Your level is: <span class="level">Unkown</span></p>
+                </div>
+              </div>
+
+            </div>
+      </div>
+
+{% endblock content %}
